@@ -259,17 +259,9 @@ void TFT_ILI93XX::begin(bool avoidSPIinit)
 	if (_useSPI1){
 		if (!avoidSPIinit) SPI1.begin();
 		_useSPI1 = true; //confirm
-		if (!SPI.pinIsChipSelect(_cs)) {//ERROR
-			bitSet(_initError,1);
-			return;
-		}
 	} else {
 		if (!avoidSPIinit) SPI.begin();
 		_useSPI1 = false; //confirm
-		if (!SPI.pinIsChipSelect(_cs)) {//ERROR
-			bitSet(_initError,1);
-			return;
-		}
 	}
 	digitalWrite(_cs,HIGH);
 	enableDataStream();
